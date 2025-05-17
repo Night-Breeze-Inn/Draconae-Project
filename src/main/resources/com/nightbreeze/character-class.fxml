@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.nightbreeze.controller.characterCreation.characterClassController">
+    <children>
+        <HBox prefHeight="360.0" prefWidth="600.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
+                    <children>
+                        <Button fx:id="paladinButton" mnemonicParsing="false" onAction="#paladinButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Paladin">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="barbarianButton" mnemonicParsing="false" onAction="#barbarianButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Barbarian">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="rangerButton" mnemonicParsing="false" onAction="#rangerButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Ranger">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="bardButton" mnemonicParsing="false" onAction="#bardButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Bard">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="rogueButton" mnemonicParsing="false" onAction="#rogueButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Rogue">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="clericButton" mnemonicParsing="false" onAction="#clericButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Cleric">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
+                    <children>
+                        <Button fx:id="sorcererButton" mnemonicParsing="false" onAction="#sorcererButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Sorcerer">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="druidButton" mnemonicParsing="false" onAction="#druidButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Druid">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="warlockButton" mnemonicParsing="false" onAction="#warlockButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Warlock">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="fighterButton" mnemonicParsing="false" onAction="#fighterButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Fighter">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="wizardButton" mnemonicParsing="false" onAction="#wizardButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Wizard">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="monkButton" mnemonicParsing="false" onAction="#monkButtonOnAction"
+                                prefHeight="25.0" prefWidth="100.0" text="Monk">
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

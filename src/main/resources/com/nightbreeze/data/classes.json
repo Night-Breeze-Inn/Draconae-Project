@@ -1,0 +1,277 @@
+{
+    "classes": [
+        {
+            "name": "Barbarian",
+            "hitDice": "d12",
+            "hitPointsLevel1": 12,
+            "hitPointsModifier": "Constitution",
+            "spellcasting": false,
+            "proficiencies": {
+                "armor": ["light armor", "medium armor", "shields"],
+                "weapons": ["simple weapons", "martial weapons"],
+                "tools": ["none"]
+            },
+            "savingThrows": ["Strength", "Constitution"],
+            "skills": {
+                "choose": 2,
+                "options": ["Animal Handling", "Athletics", "Intimidation", "Survival"]
+            },
+            "equipment": {
+                "choose": 1,
+                "options": {
+                    "mainWeapon": [
+                        {
+                            "item": "Greataxe",
+                            "quantity": 1
+                        },
+                        {
+                            "item": "Any martial weapon",
+                            "quantity": 1
+                        }
+                    ],
+                    "secondaryWeapon": [
+                        {
+                            "item": "Handaxes",
+                            "quantity": 2
+                        },
+                        {
+                            "item": "Any simple weapon",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "pack": ["Explorer's Pack"],
+                "other": [
+                    {
+                        "item": "Javelins",
+                        "quantity": 4
+                    }
+                ]
+            },
+            "features": [
+                {
+                    "name": "Rage",
+                    "description": "You can enter a rage as a bonus action. While raging, you gain advantage on Strength checks and Strength saving throws, and you gain a bonus to the damage roll of your melee weapon attacks."
+                },
+                {
+                    "name": "Unarmored Defense",
+                    "description": "While you are not wearing armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier."
+                }
+            ],
+            "enhancements": [
+                {
+                    "name": "Reckless Attack",
+                    "level": 2,
+                    "description": "You can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn."
+                },
+                {
+                    "name": "Danger Sense",
+                    "level": 2,
+                    "description": "you gain an uncanny sense of when things nearby aren’t as they should be, giving you an edge when you dodge away from danger.You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells. To gain this benefit, you can’t be blinded, deafened, or incapacitated."
+                },
+                {
+                    "name": "Primal Path",
+                    "level": 3,
+                    "description": "You choose a path that shapes the nature of your rage. Choose the Path of the Berserker or the Path of the Totem Warrior, both detailed at the end of the class description. Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels."
+                },
+                {
+                    "name": "Ability Score Improvement",
+                    "level": 4,
+                    "description": "When you reach 4th level, and again at 8th, 12th, 16th, and 19th levels, you can increase one ability score of your choice by 2 or increase two ability scores of your choice by 1."
+                },
+                {
+                    "name": "Extra Attack",
+                    "level": 5,
+                    "description": "Beginning at 5th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."
+                },
+                {
+                    "name": "Fast Movement",
+                    "level": 5,
+                    "description": "Your speed increases by 10 feet while you are not wearing heavy armor."
+                },
+                {
+                    "name": "Feral Instinct",
+                    "level": 7,
+                    "description": "your instincts are so honed that you have advantage on initiative rolls. Additionally, if you are surprised at the beginning of combat and aren’t incapacitated, you can act normally on your first turn, but only if you enter your rage before doing anything else on that turn."
+                },
+                {
+                    "name": "Ability Score Improvement",
+                    "level": 8,
+                    "description": "You can increase one ability score of your choice by 2 or increase two ability scores of your choice by 1."
+                },
+                {
+                    "name": "Brutal Critical",
+                    "level": 9,
+                    "description": "you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee attack."
+                },
+                {
+                    "name": "Relentless Rage",
+                    "level": 11,
+                    "description": "If you drop to 0 hit points while you are raging and don’t die outright, you can make a DC 10 Constitution saving throw. If you succeed, you drop to 1 hit point instead."
+                },
+                {
+                    "name": "Ability Score Improvement",
+                    "level": 12,
+                    "description": "You can increase one ability score of your choice by 2 or increase two ability scores of your choice by 1."
+                },
+                {
+                    "name": "Persistent Rage",
+                    "level": 15,
+                    "description": "Your rage is so fierce that it lasts until the end of your next long rest."
+                },
+                {
+                    "name": "Ability Score Improvement",
+                    "level": 16,
+                    "description": "You can increase one ability score of your choice by 2 or increase two ability scores of your choice by 1."
+                },
+                {
+                    "name": "Indomitable Might",
+                    "level": 18,
+                    "description": "If your total for a Strength check is less than your Strength score, you can use that score in place of the total."
+                },
+                {
+                    "name": "Ability Score Improvement",
+                    "level": 19,
+                    "description": "You can increase one ability score of your choice by 2 or increase two ability scores of your choice by 1."
+                },
+                {
+                    "name": "Primal Champion",
+                    "level": 20,
+                    "description": "Your Strength and Constitution scores increase by 4. Your maximum for those scores is now 24."
+                }
+            ],
+            "subclasses": [
+                {
+                    "name": "Path of the Berserker",
+                    "description": "The Path of the Berserker is a primal warrior who can enter a battle frenzy. This path is for those who want to be the most ferocious and savage warriors.",
+                    "enhancements": [
+                        {
+                            "name": "Frenzy",
+                            "level": 3,
+                            "description": "When you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, you can make a single melee weapon attack as a bonus action on each of your turns after this one."
+                        },
+                        {
+                            "name": "Mindless Rage",
+                            "level": 6,
+                            "description": "Starting at 6th level, you can’t be charmed or frightened while raging."
+                        },
+                        {
+                            "name": "Intimidating Presence",
+                            "level": 10,
+                            "description": "Beginning at 10th level, you can use your action to frighten someone with your menacing presence."
+                        },
+                        {
+                            "name": "Retaliation",
+                            "level": 14,
+                            "description": "At 14th level, when a creature hits you with an attack, you can use your reaction to make a melee weapon attack against that creature."
+                        }
+                    ]
+                },
+                {
+                    "name": "Path of the Totem Warrior",
+                    "description": "The Path of the Totem Warrior is a primal warrior who draws on the spirits of animals for guidance and power. This path is for those who want to be more versatile and adaptable in combat.",
+                    "enhancements": [
+                        {
+                            "name": "Spirit Seeker",
+                            "level": 3,
+                            "description": "Starting at 3rd level, you can cast the beast sense and speak with animals spells, but only as rituals."
+                        },
+                        {
+                            "name": "Totem Spirit",
+                            "level": 3,
+                            "description": "When you choose this path at 3rd level, you gain the ability to summon a spirit that takes the form of an animal. You can choose from the bear, eagle, or wolf spirit."
+                        },
+                        {
+                            "name": "Aspect of the Beast",
+                            "level": 6,
+                            "description": "At 6th level, you gain a benefit based on the spirit you chose."
+                        },
+                        {
+                            "name": "Spirit Walker",
+                            "level": 10,
+                            "description": "Beginning at 10th level, you can cast the commune with nature spell as a ritual."
+                        },
+                        {
+                            "name": "Totemic Attunement",
+                            "level": 14,
+                            "description": "At 14th level, you gain a benefit based on the spirit you chose."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Bard",
+            "hitDice": "d8",
+            "hitPointsLevel1": 8,
+            "hitPointsModifier": "Constitution",
+            "spellcasting": true,
+            "spellcastingAbility": "Charisma",
+            "spellSaveDCBase": 8,
+            "proficiencies": {
+                "armor": ["light armor"],
+                "weapons": ["simple weapons", "hand crossbows", "longswords", "rapiers", "shortswords"],
+                "tools": ["three musical instruments of your choice"]
+            },
+            "savingThrows": ["Dexterity", "Charisma"],
+            "skills": {
+                "choose": 3
+            },
+            "equipment": {
+                "choose": 1,
+                "options": {
+                    "mainWeapon": [
+                        {
+                            "item": "Rapier",
+                            "quantity": 1
+                        },
+                        {
+                            "item": "Longsword",
+                            "quantity": 1
+                        },
+                        {
+                            "item": "Any simple weapon",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "pack": {
+                    "choose": 1,
+                    "options": [
+                        {
+                            "item": "Diplomat's pack",
+                            "quantity": 1
+                        },
+                        {
+                            "item": "Entertainer's pack",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "tool": {
+                    "choose": 1,
+                    "options": [
+                        {
+                            "item": "Lute",
+                            "quantity": 1
+                        },
+                        {
+                            "item": "Any other musical instrument",
+                            "quantity": 1
+                        }
+                    ]
+                },
+                "other": [
+                    {
+                        "item": "Leather Armor",
+                        "quantity": 1
+                    },
+                    {
+                        "item": "Dagger",
+                        "quantity": 1
+                    }
+                ]
+            }
+        }
+    ]
+}

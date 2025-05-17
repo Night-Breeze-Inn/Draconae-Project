@@ -1,0 +1,558 @@
+{
+    "species": [
+        {
+            "name": "Dragonborn",
+            "abilityScoreIncrease": {
+                "Strength": 2,
+                "Charisma": 1
+            },
+            "size": "Medium",
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Draconic Ancestry",
+                    "range": 60,
+                    "description": "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table."
+                },
+                {
+                    "name": "Breath Weapon",
+                    "description": "You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest."
+                },
+                {
+                    "name": "Damage Resistance",
+                    "description": "You have resistance to the damage type associated with your draconic ancestry."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Draconic",
+                    "description": "You can speak, read, and write Draconic."
+                }
+            ],
+            "subraces": [
+                {
+                    "name": "Black",
+                    "damageType": "Acid",
+                    "breathWeapon": {
+                        "shape": "Line",
+                        "length": 30,
+                        "damageType": "Acid"
+                    }
+                },
+                {
+                    "name": "Blue",
+                    "damageType": "Lightning",
+                    "breathWeapon": {
+                        "shape": "Line",
+                        "length": 30,
+                        "damageType": "Lightning"
+                    }
+                },
+                {
+                    "name": "Brass",
+                    "damageType": "Fire",
+                    "breathWeapon": {
+                        "shape": "Line",
+                        "length": 30,
+                        "damageType": "Fire"
+                    }
+                },
+                {
+                    "name": "Bronze",
+                    "damageType": "Lightning",
+                    "breathWeapon": {
+                        "shape": "Line",
+                        "length": 30,
+                        "damageType": "Lightning"
+                    }
+                },
+                {
+                    "name": "Copper",
+                    "damageType": "Acid",
+                    "breathWeapon": {
+                        "shape": "Line",
+                        "length": 30,
+                        "damageType": "Acid"
+                    }
+                },
+                {
+                    "name": "Gold",
+                    "damageType": "Fire",
+                    "breathWeapon": {
+                        "shape": "Cone",
+                        "length": 15,
+                        "damageType": "Fire"
+                    }
+                },
+                {
+                    "name": "Green",
+                    "damageType": "Poison",
+                    "breathWeapon": {
+                        "shape": "Cone",
+                        "length": 15,
+                        "damageType": "Poison"
+                    }
+                },
+                {
+                    "name": "Red",
+                    "damageType": "Fire",
+                    "breathWeapon": {
+                        "shape": "Cone",
+                        "length": 15,
+                        "damageType": "Fire"
+                    }
+                },
+                {
+                    "name": "Silver",
+                    "damageType": "Cold",
+                    "breathWeapon": {
+                        "shape": "Cone",
+                        "length": 15,
+                        "damageType": "Cold"
+                    }
+                },
+                {
+                    "name": "White",
+                    "damageType": "Cold",
+                    "breathWeapon": {
+                        "shape": "Cone",
+                        "length": 15,
+                        "damageType": "Cold"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dwarf",
+            "abilityScoreIncrease": {
+                "Constitution": 2
+            },
+            "size": "Medium",
+            "speed": 25,
+            "proficiency": {
+                "weapons": ["battleaxe", "handaxe", "throwing hammer", "warhammer"],
+                "tools": ["artisan's tools"]
+            },
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "range": 60,
+                    "description": "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
+                },
+                {
+                    "name": "Dwarven Resilience",
+                    "description": "You have advantage on saving throws against poison, and you have resistance against poison damage."
+                },
+                {
+                    "name": "Stonecunning",
+                    "description": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Dwarvish",
+                    "description": "You can speak, read, and write Dwarvish."
+                }
+            ],
+            "subraces": [
+                {
+                    "name": "Hill Dwarf",
+                    "abilityScoreIncrease": {
+                        "Wisdom": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Dwarven Toughness",
+                            "description": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
+                        }
+                    ]
+                },
+                {
+                    "name": "Mountain Dwarf",
+                    "abilityScoreIncrease": {
+                        "Strength": 2
+                    },
+                    "traits": [
+                        {
+                            "name": "Armor Training",
+                            "description": "You are proficient with light and medium armor."
+                        }
+                    ],
+                    "proficiency": {
+                        "armor": ["light", "medium"]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Elf",
+            "abilityScoreIncrease": {
+                "Dexterity": 2
+            },
+            "size": "Medium",
+            "speed": 30,
+            "proficiency": {
+                "skill": ["Perception"]
+            },
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "range": 60,
+                    "description": "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.."
+                },
+                {
+                    "name": "Fey Ancestry",
+                    "description": "You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
+                },
+                {
+                    "name": "Trance",
+                    "description": "Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is “trance”) While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Elvish",
+                    "description": "You can speak, read, and write Elvish."
+                }
+            ],
+            "subraces": [
+                {
+                    "name": "High Elf",
+                    "abilityScoreIncrease": {
+                        "Intelligence": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Elf Weapon Training",
+                            "description": "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+                        }
+                    ],
+                    "proficiency": {
+                        "weapons": ["longsword", "shortsword", "shortbow", "longbow"]
+                    }
+                },
+                {
+                    "name": "Wood Elf",
+                    "speed": 35,
+                    "abilityScoreIncrease": {
+                        "Wisdom": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Elf Weapon Training",
+                            "description": "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+                        },
+                        {
+                            "name": "Mask of the Wild",
+                            "description": "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+                        }
+                    ],
+                    "proficiency": {
+                        "weapons": ["longsword", "shortsword", "shortbow", "longbow"]
+                    }
+                },
+                {
+                    "name": "Dark Elf (Drow)",
+                    "abilityScoreIncrease": {
+                        "Charisma": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Superior Darkvision",
+                            "range": 120,
+                            "description": "Your darkvision has a radius of 120 feet."
+                        },
+                        {
+                            "name": "Sunlight Sensitivity",
+                            "description": "You have disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight when you, the target of your attack, or whatever you are trying to perceive is in direct sunlight."
+                        },
+                        {
+                            "name": "Drow Magic",
+                            "description": "You know the dancing lights cantrip. When you reach 3rd level, you can cast the faerie fire spell once per day. When you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells."
+                        },
+                        {
+                            "name": "Elf Weapon Training",
+                            "description": "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+                        }
+                    ],
+                    "proficiency": {
+                        "weapons": ["longsword", "shortsword", "shortbow", "longbow"]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Gnome",
+            "abilityScoreIncrease": {
+                "Intelligence": 2
+            },
+            "size": "Small",
+            "speed": 25,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "range": 60,
+                    "description": "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+                },
+                {
+                    "name": "Gnome Cunning",
+                    "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Gnomish",
+                    "description": "You can speak, read, and write Gnomish."
+                }
+            ],
+            "subraces": [
+                {
+                    "name": "Forest Gnome",
+                    "abilityScoreIncrease": {
+                        "Dexterity": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Natural Illusionist",
+                            "description": "You know the minor illusion cantrip. Intelligence is your spellcasting ability for it."
+                        },
+                        {
+                            "name": "Speak with Small Beasts",
+                            "description": "Through sounds and gestures, you can communicate simple ideas with Small or smaller beasts. Forest gnomes love animals and often keep squirrels, badgers, rabbits, moles, woodpeckers, and other creatures as beloved pets."
+                        }
+                    ]
+                },
+                {
+                    "name": "Rock Gnome",
+                    "abilityScoreIncrease": {
+                        "Constitution": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Artificer's Lore",
+                            "description": "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+                        },
+                        {
+                            "name": "Tinker",
+                            "description": "You have proficiency with artisan's tools (tinker’s tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hit point). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time.",
+                            "choices": [
+                                {
+                                    "name": "Clockwork Toy",
+                                    "description": "This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents."
+                                },
+                                {
+                                    "name": "Fire Starter",
+                                    "description": "The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action."
+                                },
+                                {
+                                    "name": "Music Box",
+                                    "description": "When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song’s end or when it is closed."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Half-Elf",
+            "abilityScoreIncrease": {
+                "Charisma": 2,
+                "Other1": 1,
+                "Other2": 1
+            },
+            "size": "Medium",
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "range": 60,
+                    "description": "Accustomed to twilit forests and the night sky, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
+                },
+                {
+                    "name": "Fey Ancestry",
+                    "description": "You have advantage on saving throws against being charmed, and magic can’t put you to sleep."
+                },
+                {
+                    "name": "Skill Versatility",
+                    "description": "You gain proficiency in two skills of your choice."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Elvish",
+                    "description": "You can speak, read, and write Elvish."
+                }
+            ]
+        },
+        {
+            "name": "Halfling",
+            "abilityScoreIncrease": {
+                "Dexterity": 2
+            },
+            "size": "Small",
+            "speed": 25,
+            "traits": [
+                {
+                    "name": "Lucky",
+                    "description": "When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+                },
+                {
+                    "name": "Brave",
+                    "description": "You have advantage on saving throws against being frightened."
+                },
+                {
+                    "name": "Halfling Nimbleness",
+                    "description": "You can move through the space o f any creature that is o f a size larger than yours."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Halfling",
+                    "description": "You can speak, read, and write Halfling."
+                }
+            ],
+            "subraces": [
+                {
+                    "name": "Lightfoot",
+                    "abilityScoreIncrease": {
+                        "Charisma": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Naturally Stealthy",
+                            "description": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
+                        }
+                    ]
+                },
+                {
+                    "name": "Stout",
+                    "abilityScoreIncrease": {
+                        "Constitution": 1
+                    },
+                    "traits": [
+                        {
+                            "name": "Stout Resilience",
+                            "description": "You have advantage on saving throws against poison, and you have resistance against poison damage."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Half-Orc",
+            "abilityScoreIncrease": {
+                "Strength": 2,
+                "Constitution": 1
+            },
+            "size": "Medium",
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "range": 60,
+                    "description": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
+                },
+                {
+                    "name": "Menacing",
+                    "description": "You gain proficiency in the Intimidation skill."
+                },
+                {
+                    "name": "Relentless Endurance",
+                    "description": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can’t use this feature again until you finish a long rest."
+                },
+                {
+                    "name": "Savage Attacks",
+                    "description": "When you score a critical hit with a melee weapon attack, you can roll one additional weapon damage die and add it to the extra damage of the critical hit."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Orc",
+                    "description": "You can speak, read, and write Orc."
+                }
+            ]
+        },
+        {
+            "name": "Human",
+            "abilityScoreIncrease": {
+                "Strength": 1,
+                "Dexterity": 1,
+                "Constitution": 1,
+                "Intelligence": 1,
+                "Wisdom": 1,
+                "Charisma": 1
+            },
+            "size": "Medium",
+            "speed": 30,
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": ""
+                }
+            ]
+        },
+        {
+            "name": "Tiefling",
+            "abilityScoreIncrease": {
+                "Charisma": 2,
+                "Intelligence": 1
+            },
+            "size": "Medium",
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "range": 60,
+                    "description": "Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray."
+                },
+                {
+                    "name": "Hellish Resistance",
+                    "description": "You have resistance to fire damage."
+                },
+                {
+                    "name": "Infernal Legacy",
+                    "description": "You know the thaumaturgy cantrip. When you reach 3rd level, you can cast the hellish rebuke spell once as a 2nd-level spell. When you reach 5th level, you can cast the darkness spell once. Charisma is your spellcasting ability for these spells."
+                }
+            ],
+            "languages": [
+                {
+                    "name": "Common",
+                    "description": "You can speak, read, and write Common."
+                },
+                {
+                    "name": "Infernal",
+                    "description": "You can speak, read, and write Infernal."
+                }
+            ]
+        }
+    ]
+}

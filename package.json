@@ -1,0 +1,25 @@
+{
+    "name": "draconaeproject",
+    "version": "0.3.0",
+    "description": "![logo](src/main/resources/com/nightbreeze/images/logo-Draconae-Project.png)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KoRIOz675/Draconae-Project.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/KoRIOz675/Draconae-Project/issues"
+    },
+    "homepage": "https://github.com/KoRIOz675/Draconae-Project#readme",
+    "devDependencies": {
+        "@prettier/plugin-xml": "3.4.1",
+        "prettier": "3.5.3",
+        "prettier-plugin-java": "2.6.7"
+    }
+}

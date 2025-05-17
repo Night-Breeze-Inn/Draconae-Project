@@ -1,0 +1,22 @@
+tabWidth: 4
+useTabs: false
+bracketSpacing: true
+bracketSameLine: true
+printWidth: 120
+semi: true
+singleQuote: false
+quoteProps: as-needed
+trailingComma: all
+arrowParens: avoid
+
+overrides:
+  - files:
+      - "*.xml"
+      - "*.fxml"
+    options:
+      printWidth: 120
+      tabWidth: 2
+      xm: "strict"
+      xmlSelfClosingSpace: true
+
+
