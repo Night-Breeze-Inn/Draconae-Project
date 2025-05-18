@@ -33,9 +33,15 @@ public class HomePageController implements Initializable {
     Character currentCharacter;
 
     @FXML
-    public void characterButtonAction() throws IOException {
+    public void characterButtonAction(ActionEvent actionEvent) throws IOException {
         if (currentCharacter == null) {
             GUIManager.loadStage("character-name");
+        } else {
+            System.out.println(currentCharacter.getName());
+            Parent root = GUIManager.loadFXML("character-display");
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = stage.getScene();
+            scene.setRoot(root);
         }
     }
 
