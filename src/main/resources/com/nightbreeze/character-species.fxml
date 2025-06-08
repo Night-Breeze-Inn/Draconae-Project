@@ -2,79 +2,79 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.nightbreeze.controller.characterCreation.characterSpeciesController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nightbreeze.controller.characterCreation.characterSpeciesController">
     <children>
-        <HBox prefHeight="360.0" prefWidth="600.0">
-            <children>
-                <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
-                    <children>
-                        <Button fx:id="dragonbornButton" mnemonicParsing="false" onAction="#dragonbornButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Dragonborn">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="dwarfButton" mnemonicParsing="false" onAction="#dwarfButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Dwarf">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="elfButton" mnemonicParsing="false" onAction="#elfButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Elf">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="gnomeButton" mnemonicParsing="false" onAction="#gnomeButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Gnome">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="halflingButton" mnemonicParsing="false" onAction="#halflingButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Halfling">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
-                    <children>
-                        <Button fx:id="halfElfButton" mnemonicParsing="false" onAction="#halfElfButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Half-Elf">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="halfOrcButton" mnemonicParsing="false" onAction="#halfOrcButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Half-Orc">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="humanButton" mnemonicParsing="false" onAction="#humanButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Human">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="tieflingButton" mnemonicParsing="false" onAction="#tieflingButtonOnAction"
-                                prefHeight="25.0" prefWidth="100.0" text="Tiefling">
-                            <VBox.margin>
-                                <Insets bottom="5.0" top="5.0"/>
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
+      <VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0">
+         <children>
+            <Label text="Choose your species">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+              <HBox alignment="CENTER" prefHeight="484.0" prefWidth="1080.0">
+                  <children>
+                      <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
+                          <children>
+                              <Button fx:id="dragonbornButton" mnemonicParsing="false" onAction="#dragonbornButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Dragonborn">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="dwarfButton" mnemonicParsing="false" onAction="#dwarfButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Dwarf">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="elfButton" mnemonicParsing="false" onAction="#elfButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Elf">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="gnomeButton" mnemonicParsing="false" onAction="#gnomeButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Gnome">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="halflingButton" mnemonicParsing="false" onAction="#halflingButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Halfling">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                          </children>
+                      </VBox>
+                      <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
+                          <children>
+                              <Button fx:id="halfElfButton" mnemonicParsing="false" onAction="#halfElfButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Half-Elf">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="halfOrcButton" mnemonicParsing="false" onAction="#halfOrcButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Half-Orc">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="humanButton" mnemonicParsing="false" onAction="#humanButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Human">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                              <Button fx:id="tieflingButton" mnemonicParsing="false" onAction="#tieflingButtonOnAction" prefHeight="25.0" prefWidth="100.0" text="Tiefling">
+                                  <VBox.margin>
+                                      <Insets bottom="5.0" top="5.0" />
+                                  </VBox.margin>
+                              </Button>
+                          </children>
+                      </VBox>
+                  </children>
+              </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

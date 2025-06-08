@@ -2,22 +2,22 @@ package com.nightbreeze.controller.characterCreation;
 
 import static com.nightbreeze.controller.characterCreation.characterNameController.character;
 
+import com.nightbreeze.model.ApiReference;
 import com.nightbreeze.model.Classes;
-import com.nightbreeze.model.Proficiency;
 import com.nightbreeze.util.CharacterData;
 import com.nightbreeze.util.GUIManager;
 import com.nightbreeze.util.JsonFileReader;
 import com.nightbreeze.util.Utils;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,52 +31,40 @@ public class characterClassController implements Initializable {
 
     @FXML
     private Button barbarianButton;
-
     @FXML
     private Button bardButton;
-
     @FXML
     private Button clericButton;
-
     @FXML
     private Button druidButton;
-
     @FXML
     private Button fighterButton;
-
     @FXML
     private Button monkButton;
-
     @FXML
     private Button paladinButton;
-
     @FXML
     private Button rangerButton;
-
     @FXML
     private Button rogueButton;
-
     @FXML
     private Button sorcererButton;
-
     @FXML
     private Button warlockButton;
-
     @FXML
     private Button wizardButton;
 
-    CharacterData characterData = new CharacterData();
-
-    private static List<Classes> classesList;
-
+    private final CharacterData characterData = new CharacterData();
+    private static List<Classes> classesList; // Cache for all class data
     public static Classes classSelected;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Load class data from JSON if it hasn't been loaded yet
         if (classesList == null) {
             classesList = JsonFileReader.readJsonDataFile("classes");
             if (classesList.isEmpty()) {
-                Utils.showErrorAlert("Data error", "No classes found");
+                Utils.showErrorAlert("Data Error", "No classes found in classes.json. Cannot proceed.");
                 disableAllButton(true);
             } else {
                 System.out.println("Classes data loaded successfully: " + classesList.size() + " classes.");
@@ -85,95 +73,104 @@ public class characterClassController implements Initializable {
         classSelected = null;
     }
 
-    public void barbarianButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Barbarian", actionEvent);
+    // --- Button Actions ---
+    public void barbarianButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Barbarian", e);
     }
 
-    public void bardButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Bard", actionEvent);
+    public void bardButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Bard", e);
     }
 
-    public void clericButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Cleric", actionEvent);
+    public void clericButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Cleric", e);
     }
 
-    public void druidButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Druid", actionEvent);
+    public void druidButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Druid", e);
     }
 
-    public void fighterButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Fighter", actionEvent);
+    public void fighterButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Fighter", e);
     }
 
-    public void monkButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Monk", actionEvent);
+    public void monkButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Monk", e);
     }
 
-    public void paladinButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Paladin", actionEvent);
+    public void paladinButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Paladin", e);
     }
 
-    public void rangerButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Ranger", actionEvent);
+    public void rangerButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Ranger", e);
     }
 
-    public void rogueButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Rogue", actionEvent);
+    public void rogueButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Rogue", e);
     }
 
-    public void sorcererButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Sorcerer", actionEvent);
+    public void sorcererButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Sorcerer", e);
     }
 
-    public void warlockButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Warlock", actionEvent);
+    public void warlockButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Warlock", e);
     }
 
-    public void wizardButtonOnAction(ActionEvent actionEvent) throws IOException {
-        classSelection("Wizard", actionEvent);
+    public void wizardButtonOnAction(ActionEvent e) throws IOException {
+        classSelection("Wizard", e);
     }
 
     public void classSelection(String className, ActionEvent actionEvent) throws IOException {
         if (classesList == null || classesList.isEmpty()) {
-            Utils.showErrorAlert("Data error", "Data not loaded");
+            Utils.showErrorAlert("Data error", "Class data has not been loaded.");
             return;
         }
 
-        Optional<Classes> optionalClass = classesList.stream().filter(c -> c.getClassName().equals(className)).findFirst();
+        Optional<Classes> optionalClass = classesList.stream().filter(c -> c.getName().equals(className)).findFirst();
+
         if (optionalClass.isPresent()) {
             classSelected = optionalClass.get();
-            Hashtable<String, ArrayList<String>> proficiencies = new Hashtable<>();
-            proficiencies.put("Armor", new ArrayList<>());
-            proficiencies.put("Weapons", new ArrayList<>());
-            proficiencies.put("Tools", new ArrayList<>());
-            for (String prof : classSelected.getProficienciesArmor()) {
-                if (!proficiencies.get("Armor").contains(prof)) {
-                    proficiencies.get("Armor").add(prof);
+
+            character.setClassName(classSelected.getName());
+
+            character.setHitDice("1d" + classSelected.getHitDie());
+
+            character.setMaxHP(classSelected.getHitDie());
+            character.setCurrentHP(classSelected.getHitDie());
+
+            if (character.getProficiency() == null) {
+                character.setProficiency(new Hashtable<>());
+            }
+            Hashtable<String, ArrayList<String>> proficiencies = character.getProficiency();
+            proficiencies.computeIfAbsent("Armor", k -> new ArrayList<>());
+            proficiencies.computeIfAbsent("Weapons", k -> new ArrayList<>());
+            proficiencies.computeIfAbsent("Tools", k -> new ArrayList<>());
+            proficiencies.computeIfAbsent("Saving Throws", k -> new ArrayList<>());
+            proficiencies.computeIfAbsent("Skills", k -> new ArrayList<>());
+
+            List<String> savingThrows = classSelected.getSavingThrows().stream()
+                    .map(ApiReference::getName)
+                    .map(s -> s.replace("Saving Throw: ", "")) // Clean up the name
+                    .collect(Collectors.toList());
+            proficiencies.get("Saving Throws").addAll(savingThrows);
+
+            // Add fixed proficiencies (Armor, Weapons, etc.)
+            for (ApiReference prof : classSelected.getProficiencies()) {
+                String profName = prof.getName();
+                if (profName.contains("Armor:")) {
+                    proficiencies.get("Armor").add(profName.replace("Armor: ", "").trim());
+                } else if (profName.contains("Weapons:")) {
+                    proficiencies.get("Weapons").add(profName.replace("Weapons: ", "").trim());
+                } else if (profName.contains("Tools:")) {
+                    proficiencies.get("Tools").add(profName.replace("Tools: ", "").trim());
                 }
             }
-            for (String prof : classSelected.getProficienciesWeapons()) {
-                if (!proficiencies.get("Weapons").contains(prof)) {
-                    proficiencies.get("Weapons").add(prof);
-                }
-            }
-            for (String prof : classSelected.getProficienciesTools()) {
-                if (!proficiencies.get("Tools").contains(prof)) {
-                    proficiencies.get("Tools").add(prof);
-                }
-            }
-            character.setClassName(classSelected.getClassName());
-            character.setMaxHP(classSelected.getHitPoints());
-            character.setCurrentHP(classSelected.getHitPoints());
-            character.setHitDice(classSelected.getHitDice());
-            character.setProficiency(proficiencies);
 
             characterData.saveCharacterData(character);
-            Boolean asSubClass = false; // Placeholder
-            String nextScreen = asSubClass ? "character-sub-classes" : "character-stats";
-            Parent root = GUIManager.loadFXML(nextScreen);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = stage.getScene();
-            scene.setRoot(root);
+
+            GUIManager.changeScene((Node) actionEvent.getSource(), "character-stats");
         } else {
             Utils.showErrorAlert("Error", "Could not find data for class: " + className);
             System.err.println("Class not found in loaded data: " + className);

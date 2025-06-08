@@ -2,9 +2,9 @@ package com.nightbreeze.controller.characterCreation;
 
 import static com.nightbreeze.controller.characterCreation.characterNameController.character;
 
-import com.nightbreeze.model.Language;
+import com.nightbreeze.model.AbilityBonus;
+import com.nightbreeze.model.ApiReference;
 import com.nightbreeze.model.Species;
-import com.nightbreeze.model.Trait;
 import com.nightbreeze.util.CharacterData;
 import com.nightbreeze.util.GUIManager;
 import com.nightbreeze.util.JsonFileReader;
@@ -12,7 +12,6 @@ import com.nightbreeze.util.Utils;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -27,6 +26,7 @@ import javafx.stage.Stage;
 
 public class characterSpeciesController implements Initializable {
 
+    // FXML Buttons
     @FXML
     private Button dragonbornButton;
 
@@ -54,26 +54,30 @@ public class characterSpeciesController implements Initializable {
     @FXML
     private Button tieflingButton;
 
-    CharacterData characterData = new CharacterData();
-
-    private static List<Species> speciesList;
-
+    // Data Management
+    private final CharacterData characterData = new CharacterData();
+    private static List<Species> speciesList; // Cache for all species data
     public static Species selectedSpecies = null;
+    public static List<ApiReference> selectedSpeciesSubraceRefs = null; // To pass to the next controller
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Load species data from JSON if it hasn't been loaded yet
         if (speciesList == null) {
             speciesList = JsonFileReader.readJsonDataFile("species");
             if (speciesList.isEmpty()) {
-                Utils.showErrorAlert("Data error", "No species found");
+                Utils.showErrorAlert("Data Error", "No species found in species.json. Cannot proceed.");
                 disableAllButton(true);
             } else {
                 System.out.println("Species data loaded successfully: " + speciesList.size() + " species.");
             }
         }
+        // Reset static fields for a fresh selection
         selectedSpecies = null;
+        selectedSpeciesSubraceRefs = null;
     }
 
+    // --- Button Actions ---
     public void dragonbornButtonOnAction(ActionEvent actionEvent) throws IOException {
         speciesSelection("Dragonborn", actionEvent);
     }
@@ -110,13 +114,18 @@ public class characterSpeciesController implements Initializable {
         speciesSelection("Tiefling", actionEvent);
     }
 
-    private void speciesSelection(String species, ActionEvent actionEvent) throws IOException {
+
+    private void speciesSelection(String speciesName, ActionEvent actionEvent) throws IOException {
         if (speciesList == null || speciesList.isEmpty()) {
-            Utils.showErrorAlert("Data error", "Data not loaded");
+            Utils.showErrorAlert("Data Error", "Species data has not been loaded.");
             return;
         }
 
-        Optional<Species> speciesOptional = speciesList.stream().filter(s -> s.getName().equals(species)).findFirst();
+        Optional<Species> speciesOptional = speciesList
+                .stream()
+                .filter(s -> s.getName().equalsIgnoreCase(speciesName))
+                .findFirst();
+
         if (speciesOptional.isPresent()) {
             selectedSpecies = speciesOptional.get();
 
@@ -124,48 +133,50 @@ public class characterSpeciesController implements Initializable {
             character.setHeight(selectedSpecies.getSize());
             character.setSpeed(selectedSpecies.getSpeed());
 
-            Map<String, Integer> abilityScore = selectedSpecies.getAbilityScoreIncrease();
-            for (Map.Entry<String, Integer> entry : abilityScore.entrySet()) {
-                if (entry.getKey().equals("Strength")) {
-                    character.setStrength(entry.getValue());
-                }
-                if (entry.getKey().equals("Dexterity")) {
-                    character.setDexterity(entry.getValue());
-                }
-                if (entry.getKey().equals("Constitution")) {
-                    character.setConstitution(entry.getValue());
-                }
-                if (entry.getKey().equals("Intelligence")) {
-                    character.setIntelligence(entry.getValue());
-                }
-                if (entry.getKey().equals("Wisdom")) {
-                    character.setWisdom(entry.getValue());
-                }
-                if (entry.getKey().equals("Charisma")) {
-                    character.setCharisma(entry.getValue());
+            for (AbilityBonus ab : selectedSpecies.getAbilityBonuses()) {
+                int bonus = ab.getBonus();
+                String statName = ab.getAbilityScore().getName();
+                switch (statName) {
+                    case "STR" -> character.setStrength(character.getStrength() + bonus);
+                    case "DEX" -> character.setDexterity(character.getDexterity() + bonus);
+                    case "CON" -> character.setConstitution(character.getConstitution() + bonus);
+                    case "INT" -> character.setIntelligence(character.getIntelligence() + bonus);
+                    case "WIS" -> character.setWisdom(character.getWisdom() + bonus);
+                    case "CHA" -> character.setCharisma(character.getCharisma() + bonus);
                 }
             }
 
-            List<String> languages = selectedSpecies
-                .getLanguages()
-                .stream()
-                .map(Language::getName)
-                .collect(Collectors.toList());
-            character.setLanguage(languages);
+            List<String> languageNames = selectedSpecies
+                    .getLanguages()
+                    .stream()
+                    .map(ApiReference::getName)
+                    .collect(Collectors.toList());
+            character.setLanguage(languageNames);
 
-            List<String> traits = selectedSpecies.getTraits().stream().map(Trait::getName).collect(Collectors.toList());
-            character.setRacialTraits(traits);
+            List<String> traitNames = selectedSpecies
+                    .getTraits()
+                    .stream()
+                    .map(ApiReference::getName)
+                    .collect(Collectors.toList());
+            character.setRacialTraits(traitNames);
+
             characterData.saveCharacterData(character);
 
             boolean hasSubraces = selectedSpecies.getSubraces() != null && !selectedSpecies.getSubraces().isEmpty();
-            String nextScreen = hasSubraces ? "character-sub-species" : "character-class";
-            Parent root = GUIManager.loadFXML(nextScreen);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = stage.getScene();
-            scene.setRoot(root);
+            String nextScreen;
+
+            if (hasSubraces) {
+                selectedSpeciesSubraceRefs = selectedSpecies.getSubraces();
+                nextScreen = "character-sub-species";
+            } else {
+                selectedSpeciesSubraceRefs = null;
+                nextScreen = "character-class";
+            }
+
+            GUIManager.changeScene((Node) actionEvent.getSource(), nextScreen);
         } else {
-            Utils.showErrorAlert("Error", "Could not find data for species: " + species);
-            System.err.println("Species not found in loaded data: " + species);
+            Utils.showErrorAlert("Error", "Could not find data for species: " + speciesName);
+            System.err.println("Species not found in loaded data: " + speciesName);
         }
     }
 

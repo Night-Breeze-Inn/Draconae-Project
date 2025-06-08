@@ -11,7 +11,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         CharacterData.createDataFolder();
-        GUIManager.loadStage("home-page");
+        GUIManager.initializePrimaryStage("home-page");
     }
 
     public static void main(String[] args) {

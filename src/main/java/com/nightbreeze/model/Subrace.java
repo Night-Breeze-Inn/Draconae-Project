@@ -1,16 +1,29 @@
+// src/main/java/com/nightbreeze/model/Subrace.java
 package com.nightbreeze.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
-import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Subrace {
 
     private String name;
-    private Map<String, Integer> abilityScoreIncrease;
-    private List<Trait> traits;
-    private Proficiency proficiency; // Subraces can also grant proficiencies
+
+    @JsonProperty("race")
+    private ApiReference parentRace;
+
+    @JsonProperty("desc")
+    private String description;
+
+    @JsonProperty("ability_bonuses")
+    private List<AbilityBonus> abilityBonuses;
+
+    @JsonProperty("starting_proficiencies")
+    private List<ApiReference> startingProficiencies;
+
+    @JsonProperty("racial_traits")
+    private List<ApiReference> racialTraits;
 
     // Getters and Setters...
     public String getName() {
@@ -21,33 +34,48 @@ public class Subrace {
         this.name = name;
     }
 
-    public Map<String, Integer> getAbilityScoreIncrease() {
-        return abilityScoreIncrease;
+    public ApiReference getParentRace() {
+        return parentRace;
     }
 
-    public void setAbilityScoreIncrease(Map<String, Integer> abilityScoreIncrease) {
-        this.abilityScoreIncrease = abilityScoreIncrease;
+    public void setParentRace(ApiReference parentRace) {
+        this.parentRace = parentRace;
     }
 
-    public List<Trait> getTraits() {
-        return traits;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTraits(List<Trait> traits) {
-        this.traits = traits;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Proficiency getProficiency() {
-        return proficiency;
+    public List<AbilityBonus> getAbilityBonuses() {
+        return abilityBonuses;
     }
 
-    public void setProficiency(Proficiency proficiency) {
-        this.proficiency = proficiency;
+    public void setAbilityBonuses(List<AbilityBonus> abilityBonuses) {
+        this.abilityBonuses = abilityBonuses;
+    }
+
+    public List<ApiReference> getStartingProficiencies() {
+        return startingProficiencies;
+    }
+
+    public void setStartingProficiencies(List<ApiReference> startingProficiencies) {
+        this.startingProficiencies = startingProficiencies;
+    }
+
+    public List<ApiReference> getRacialTraits() {
+        return racialTraits;
+    }
+
+    public void setRacialTraits(List<ApiReference> racialTraits) {
+        this.racialTraits = racialTraits;
     }
 
     @Override
     public String toString() {
-        // Useful for debugging and potentially ComboBox display
         return name;
     }
 }

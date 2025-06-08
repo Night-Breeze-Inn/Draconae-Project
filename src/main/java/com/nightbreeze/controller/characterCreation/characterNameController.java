@@ -37,9 +37,6 @@ public class characterNameController implements Initializable {
         character.setName(characterName.getText());
         characterData.saveCharacterData(character);
 
-        Parent root = GUIManager.loadFXML("character-species");
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = stage.getScene();
-        scene.setRoot(root);
+        GUIManager.changeScene((Node) actionEvent.getSource(), "character-species");
     }
 }

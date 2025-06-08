@@ -2,92 +2,60 @@ package com.nightbreeze.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Classes {
 
-    @JsonProperty("name")
-    private String className;
+    private String name;
 
-    @JsonProperty("hitDice")
-    private String hitDice;
-
-    @JsonProperty("hitPointsLevel1")
-    private int hitPoints;
+    @JsonProperty("hit_die")
+    private int hitDie;
 
     @JsonProperty("proficiencies")
-    private Proficiency proficiencies;
+    private List<ApiReference> proficiencies;
 
-    @JsonProperty("features")
-    private List<Features> features;
+    @JsonProperty("saving_throws")
+    private List<ApiReference> savingThrows;
 
-    // Getters & Setters
-    public String getClassName() {
-        return className;
+//     @JsonProperty("proficiency_choices")
+//     private List<ProficiencyChoice> proficiencyChoices;
+
+    // Getters and Setters
+    public String getName() {
+        return name;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getHitDice() {
-        return hitDice;
+    public int getHitDie() {
+        return hitDie;
     }
 
-    public void setHitDice(String hitDice) {
-        this.hitDice = hitDice;
+    public void setHitDie(int hitDie) {
+        this.hitDie = hitDie;
     }
 
-    public int getHitPoints() {
-        return hitPoints;
-    }
-
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
-    }
-
-    public Proficiency getProficiencies() {
+    public List<ApiReference> getProficiencies() {
         return proficiencies;
     }
 
-    public void setProficiencies(Proficiency proficiencies) {
+    public void setProficiencies(List<ApiReference> proficiencies) {
         this.proficiencies = proficiencies;
     }
 
-    public List<Features> getFeatures() {
-        if (this.features == null) {
-            this.features = new ArrayList<>();
-        }
-        return features;
+    public List<ApiReference> getSavingThrows() {
+        return savingThrows;
     }
 
-    public void setFeatures(List<Features> features) {
-        if (this.features == null) {
-            this.features = new ArrayList<>();
-        } else {
-            this.features.clear();
-        }
-        if (features != null) {
-            this.features.addAll(features);
-        }
+    public void setSavingThrows(List<ApiReference> savingThrows) {
+        this.savingThrows = savingThrows;
     }
 
     @Override
     public String toString() {
-        return className;
-    }
-
-    public List<String> getProficienciesArmor() {
-        return this.proficiencies.getArmor();
-    }
-
-    public List<String> getProficienciesTools() {
-        return this.proficiencies.getTools();
-    }
-
-    public List<String> getProficienciesWeapons() {
-        return this.proficiencies.getWeapons();
+        return name;
     }
 }

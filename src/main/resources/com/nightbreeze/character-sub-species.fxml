@@ -8,104 +8,82 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.nightbreeze.controller.characterCreation.CharacterSubSpeciesController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nightbreeze.controller.characterCreation.CharacterSubSpeciesController">
     <children>
-        <VBox alignment="CENTER" prefHeight="360.0" prefWidth="600.0">
+        <VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0">
             <children>
                 <Label fx:id="speciesNameLabel" text="Species Name">
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
                 <Label fx:id="speciesDescriptionLabel" text="Species Desc">
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0"/>
+                        <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                 </Label>
-                <HBox prefHeight="260.0" prefWidth="600.0">
+                <HBox alignment="CENTER" prefHeight="449.0" prefWidth="1080.0">
                     <children>
                         <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
                             <children>
-                                <Button fx:id="subSpecies1Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="1">
+                                <Button fx:id="subSpecies1Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="1">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies3Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="3">
+                                <Button fx:id="subSpecies3Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="3">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies5Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="5">
+                                <Button fx:id="subSpecies5Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="5">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies7Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="7">
+                                <Button fx:id="subSpecies7Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="7">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies9Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="9">
+                                <Button fx:id="subSpecies9Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="9">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
                             </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="360.0" prefWidth="300.0">
                             <children>
-                                <Button fx:id="subSpecies2Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="2">
+                                <Button fx:id="subSpecies2Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="2">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies4Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="4">
+                                <Button fx:id="subSpecies4Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="4">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies6Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="6">
+                                <Button fx:id="subSpecies6Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="6">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies8Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="8">
+                                <Button fx:id="subSpecies8Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="8">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
-                                <Button fx:id="subSpecies10Button" maxHeight="-Infinity" maxWidth="-Infinity"
-                                        minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                        prefHeight="40.0" prefWidth="200.0" text="10">
+                                <Button fx:id="subSpecies10Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="10">
                                     <VBox.margin>
-                                        <Insets bottom="5.0" top="5.0"/>
+                                        <Insets bottom="5.0" top="5.0" />
                                     </VBox.margin>
                                 </Button>
                             </children>

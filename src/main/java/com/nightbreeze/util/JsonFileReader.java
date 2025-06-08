@@ -1,8 +1,11 @@
 package com.nightbreeze.util;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nightbreeze.model.ClassesListWrapper;
-import com.nightbreeze.model.SpeciesListWrapper;
+import com.nightbreeze.model.Classes;
+import com.nightbreeze.model.Species;
+import com.nightbreeze.model.Subrace;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
@@ -22,27 +25,22 @@ public class JsonFileReader {
             }
 
             if (fileName.equalsIgnoreCase("species")) {
-                SpeciesListWrapper wrapper = mapper.readValue(inputStream, SpeciesListWrapper.class);
-                if (wrapper != null && wrapper.getSpecies() != null) {
-                    System.out.println("Successfully loaded " + wrapper.getSpecies().size() + " species.");
-                    return wrapper.getSpecies();
-                } else {
-                    System.err.println("Species data is null or empty in the JSON file: " + resourcePath);
-                    return Collections.emptyList();
-                }
+                List<Species> speciesList = mapper.readValue(inputStream, new TypeReference<List<Species>>() {
+                });
+                System.out.println("Successfully loaded " + speciesList.size() + " species.");
+                return speciesList;
+
             } else if (fileName.equalsIgnoreCase("classes")) {
-                ClassesListWrapper wrapper = mapper.readValue(inputStream, ClassesListWrapper.class);
-                if (wrapper != null && wrapper.getClasses() != null) {
-                    System.out.println("Successfully loaded " + wrapper.getClasses().size() + " classes.");
-                    return wrapper.getClasses();
-                } else {
-                    System.err.println("Classes data is null or empty in the JSON file: " + resourcePath);
-                    return Collections.emptyList();
-                }
-            }
-            //            else-if (fileName.equalsIgnoreCase("armors")) {}
-            //            else-if (fileName.equalsIgnoreCase("weapons")) {}
-            else {
+                List<Classes> classesList = mapper.readValue(inputStream, new TypeReference<List<Classes>>() {
+                });
+                System.out.println("Successfully loaded " + classesList.size() + " classes.");
+                return classesList;
+            } else if (fileName.equalsIgnoreCase("subraces")) {
+                List<Subrace> subraceList = mapper.readValue(inputStream, new TypeReference<List<Subrace>>() {
+                });
+                System.out.println("Successfully loaded " + subraceList.size() + " subraces.");
+                return subraceList;
+            } else {
                 System.err.println("Unsupported data file type requested: " + fileName);
                 return Collections.emptyList();
             }

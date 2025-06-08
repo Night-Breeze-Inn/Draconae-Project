@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nightbreeze.controller.characterCreation.characterNameController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nightbreeze.controller.characterCreation.characterNameController">
     <children>
-        <VBox alignment="CENTER" prefHeight="360.0" prefWidth="600.0">
+        <VBox alignment="CENTER" prefHeight="720.0" prefWidth="1080.0">
             <children>
                 <Label text="Character Name:" />
                 <TextField fx:id="characterName" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="250.0">

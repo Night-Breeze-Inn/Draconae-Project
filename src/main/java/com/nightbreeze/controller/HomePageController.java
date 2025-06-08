@@ -1,6 +1,6 @@
 package com.nightbreeze.controller;
 
-import static com.nightbreeze.util.GUIManager.projectName;
+import static com.nightbreeze.util.GUIManager.PROJECT_NAME;
 
 import com.nightbreeze.model.Character;
 import com.nightbreeze.util.CharacterData;
@@ -35,13 +35,10 @@ public class HomePageController implements Initializable {
     @FXML
     public void characterButtonAction(ActionEvent actionEvent) throws IOException {
         if (currentCharacter == null) {
-            GUIManager.loadStage("character-name");
+            GUIManager.changeScene((Node) actionEvent.getSource(), "character-name");
         } else {
             System.out.println(currentCharacter.getName());
-            Parent root = GUIManager.loadFXML("character-display");
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = stage.getScene();
-            scene.setRoot(root);
+            GUIManager.changeScene((Node) actionEvent.getSource(), "character-display");
         }
     }
 
@@ -57,7 +54,7 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ProjectNameLabel.setText(projectName);
+        ProjectNameLabel.setText(PROJECT_NAME);
         currentCharacter = CharacterData.loadCharacterData();
 
         if (currentCharacter == null) {
