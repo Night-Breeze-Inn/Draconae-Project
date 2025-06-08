@@ -16,11 +16,11 @@
             <children>
                 <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="500.0">
                     <children>
-                        <Button fx:id="characterButton" mnemonicParsing="false" onAction="#characterButtonAction" prefWidth="175.0" text="Create a new Character">
+                        <Button fx:id="characterButton" minWidth="175.0" mnemonicParsing="false" onAction="#characterButtonAction" text="Create a new Character">
                      <VBox.margin>
                         <Insets bottom="15.0" right="50.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="deleteCharacterButton" mnemonicParsing="false" onAction="#deleteCharacterAction" prefWidth="175.0" text="Delete character">
+                  <Button fx:id="deleteCharacterButton" minWidth="175.0" mnemonicParsing="false" onAction="#deleteCharacterAction" text="Delete character">
                      <VBox.margin>
                         <Insets right="50.0" top="15.0" />
                      </VBox.margin>

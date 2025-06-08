@@ -1,12 +1,28 @@
 package com.nightbreeze.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nightbreeze.util.Utils;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import javafx.beans.property.*;
 
 public class Character {
+
+    // XP thresholds
+    @JsonIgnore
+    private static final int[] XP_THRESHOLDS = {
+            0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000,
+            85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
+    };
+
+    @JsonIgnore
+    public static int getXpForLevel(int level) {
+        if (level < 2 || level > 20) {
+            return 0;
+        }
+        return XP_THRESHOLDS[level - 1];
+    }
 
     // Basic Information
     private final StringProperty characterName = new SimpleStringProperty();
@@ -151,6 +167,28 @@ public class Character {
         return speed;
     }
 
+    @JsonIgnore
+    public int getXpForNextLevel() {
+        int currentLevel = getLevel();
+        if (currentLevel < 20) {
+            return XP_THRESHOLDS[currentLevel];
+        }
+        return getExperiencePoints();
+    }
+
+    @JsonIgnore
+    public boolean checkForLevelUp() {
+        int currentLevel = getLevel();
+        if (currentLevel < 20) {
+            if (getExperiencePoints() >= getXpForNextLevel()) {
+                setLevel(currentLevel + 1);
+                Utils.showInfoAlert("Level Up!", "Congratulations! You are now level " + getLevel() + "!");
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Getters & Setters -- Basic Info
     public String getName() {
         return characterName.get();
@@ -223,6 +261,10 @@ public class Character {
     public void setSpeed(int speed) {
         this.speed.set(speed);
     }
+
+    public int getExperiencePoints() { return experiencePoints.get(); }
+
+    public void setExperiencePoints(int experiencePoints) {this.experiencePoints.set(experiencePoints);}
 
     // Getter & Setters -- Inspiration and Spellcasting
     public boolean getInspiration() {
@@ -445,6 +487,17 @@ public class Character {
     @JsonIgnore
     public int getCharismaModifier() {
         return Math.floorDiv(getCharisma() - 10, 2);
+    }
+
+    // Getters -- Proficiency Bonus
+    @JsonIgnore
+    public int getProficiencyBonus() {
+        int level = getLevel();
+        if (level >= 17) return 6;
+        if (level >= 13) return 5;
+        if (level >= 9) return 4;
+        if (level >= 5) return 3;
+        return 2;
     }
 
     @Override

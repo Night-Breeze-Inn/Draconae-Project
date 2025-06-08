@@ -13,11 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class HomePageController implements Initializable {
 
@@ -46,10 +43,7 @@ public class HomePageController implements Initializable {
     public void deleteCharacterAction(ActionEvent actionEvent) throws IOException {
         CharacterData.deleteCharacterData();
         Utils.showInfoAlert("Deleted Character", "Character deleted successfully");
-        Parent root = GUIManager.loadFXML("home-page");
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = stage.getScene();
-        scene.setRoot(root);
+        GUIManager.changeScene((Node) actionEvent.getSource(), "character-name");
     }
 
     @Override
