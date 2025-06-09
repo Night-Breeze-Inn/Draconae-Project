@@ -14,7 +14,6 @@
   <a href="LICENSE">
     <img src="https://img.shields.io/github/license/KoRIOz675/Draconae-Project?style=for-the-badge" alt="License">
   </a>
-  <!-- You can add more badges like Java version, JavaFX version, last commit, etc. -->
 </p>
 
 ---
