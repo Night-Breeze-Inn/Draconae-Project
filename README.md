@@ -7,7 +7,7 @@
 <p align="center">
   <em>Your digital companion for creating and managing <a href="https://www.dndbeyond.com" target="_blank">Dungeons & Dragons</a> 5th Edition characters!</em>
   <br><br>
-  <a href="https://github.com/KoRIOz675/Draconae-Project/actions">
+  <a href="https://github.com/Night-Breeze-Inn/Draconae-Project/actions">
     <img src="https://img.shields.io/github/actions/workflow/status/Night-Breeze-Inn/Draconae-Project/maven.yml?style=for-the-badge&branch=main" alt="Build Status">
   </a>
   <img src="https://img.shields.io/badge/status-in%20development-blue?style=for-the-badge" alt="Project Status">
