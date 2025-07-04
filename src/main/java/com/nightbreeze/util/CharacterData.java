@@ -112,6 +112,9 @@ public class CharacterData {
             try {
                 System.out.println("Loading character data from " + dataFile.getAbsolutePath());
                 Character loadedCharacter = mapper.readValue(dataFile, Character.class);
+                if (loadedCharacter != null) {
+                    loadedCharacter.relinkEquippedItems();
+                }
                 System.out.println("Loaded character data from " + dataFile.getAbsolutePath());
                 return loadedCharacter;
             } catch (IOException e) {

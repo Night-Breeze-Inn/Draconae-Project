@@ -4,6 +4,8 @@ import atlantafx.base.theme.PrimerLight;
 import com.nightbreeze.App;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 public class GUIManager {
 
     public static final String PROJECT_NAME = "Draconae Project";
+    public static final String STYLESHEET = "style/style.css";
 
     public static Parent loadFXML(String fxml) throws IOException {
         URL fxmlUrl = App.class.getResource(fxml + ".fxml");

@@ -3,6 +3,7 @@ package com.nightbreeze.util;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nightbreeze.model.Classes;
+import com.nightbreeze.model.Equipment;
 import com.nightbreeze.model.Species;
 import com.nightbreeze.model.Subrace;
 
@@ -40,6 +41,11 @@ public class JsonFileReader {
                 });
                 System.out.println("Successfully loaded " + subraceList.size() + " subraces.");
                 return subraceList;
+            } else if (fileName.equalsIgnoreCase("equipment")) {
+                List<Equipment> equipmentList = mapper.readValue(inputStream, new TypeReference<List<Equipment>>() {
+                });
+                System.out.println("Successfully loaded " + equipmentList.size() + " equipment items.");
+                return equipmentList;
             } else {
                 System.err.println("Unsupported data file type requested: " + fileName);
                 return Collections.emptyList();

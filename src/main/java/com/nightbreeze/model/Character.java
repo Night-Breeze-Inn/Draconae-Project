@@ -1,30 +1,24 @@
 package com.nightbreeze.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.nightbreeze.util.Utils;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+
 import javafx.beans.property.*;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonTypeName("Character")
 public class Character {
 
-    // XP thresholds
     @JsonIgnore
-    private static final int[] XP_THRESHOLDS = {
-            0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000,
-            85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
-    };
+    private static final int[] XP_THRESHOLDS = {0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000};
 
-    @JsonIgnore
-    public static int getXpForLevel(int level) {
-        if (level < 2 || level > 20) {
-            return 0;
-        }
-        return XP_THRESHOLDS[level - 1];
-    }
-
-    // Basic Information
+    // --- All original properties ---
     private final StringProperty characterName = new SimpleStringProperty();
     private final StringProperty className = new SimpleStringProperty();
     private final IntegerProperty classLevel = new SimpleIntegerProperty(1);
@@ -35,42 +29,38 @@ public class Character {
     private final StringProperty alignment = new SimpleStringProperty();
     private final IntegerProperty experiencePoints = new SimpleIntegerProperty(0);
     private final IntegerProperty speed = new SimpleIntegerProperty();
-
     private final BooleanProperty inspiration = new SimpleBooleanProperty(false);
     private final BooleanProperty isSpellCasting = new SimpleBooleanProperty(false);
-
-    // Hit Points
     private final IntegerProperty maxHP = new SimpleIntegerProperty();
     private final IntegerProperty currentHP = new SimpleIntegerProperty();
     private final IntegerProperty temporaryHP = new SimpleIntegerProperty();
     private final StringProperty hitDice = new SimpleStringProperty();
-
-    // Abilities
     private final IntegerProperty strength = new SimpleIntegerProperty();
     private final IntegerProperty dexterity = new SimpleIntegerProperty();
     private final IntegerProperty constitution = new SimpleIntegerProperty();
     private final IntegerProperty intelligence = new SimpleIntegerProperty();
     private final IntegerProperty wisdom = new SimpleIntegerProperty();
     private final IntegerProperty charisma = new SimpleIntegerProperty();
-
-    // Customisation Options
     private final StringProperty age = new SimpleStringProperty();
     private final StringProperty height = new SimpleStringProperty();
     private final StringProperty weight = new SimpleStringProperty();
     private final StringProperty eyes = new SimpleStringProperty();
     private final StringProperty skin = new SimpleStringProperty();
     private final StringProperty hair = new SimpleStringProperty();
-
-    // Features, Traits and Other Info
     private final List<String> language = new ArrayList<>();
     private final List<String> racialTraits = new ArrayList<>();
     private final List<String> features = new ArrayList<>();
     private Hashtable<String, ArrayList<String>> proficiency = new Hashtable<>();
 
-    // Constructor
-    public Character() {}
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+    private List<Equipment> inventory = new ArrayList<>();
 
-    // JavaFX Properties
+    @JsonIgnore
+    private Equipment equippedArmor;
+
+    private String equippedArmorName;
+
+    // --- JavaFX Properties ---
     public StringProperty CharacterNameProperty() {
         return characterName;
     }
@@ -97,6 +87,46 @@ public class Character {
 
     public StringProperty alignmentProperty() {
         return alignment;
+    }
+
+    public IntegerProperty speedProperty() {
+        return speed;
+    }
+
+    public BooleanProperty inspirationProperty() {
+        return inspiration;
+    }
+
+    public BooleanProperty isSpellCastingProperty() {
+        return isSpellCasting;
+    }
+
+    public StringProperty heightProperty() {
+        return height;
+    }
+
+    public StringProperty weightProperty() {
+        return weight;
+    }
+
+    public StringProperty eyesProperty() {
+        return eyes;
+    }
+
+    public StringProperty skinProperty() {
+        return skin;
+    }
+
+    public StringProperty hairProperty() {
+        return hair;
+    }
+
+    public StringProperty hitDiceProperty() {
+        return hitDice;
+    }
+
+    public StringProperty ageProperty() {
+        return age;
     }
 
     public IntegerProperty experiencePointsProperty() {
@@ -139,57 +169,6 @@ public class Character {
         return charisma;
     }
 
-    public StringProperty ageProperty() {
-        return age;
-    }
-
-    public StringProperty heightProperty() {
-        return height;
-    }
-
-    public StringProperty weightProperty() {
-        return weight;
-    }
-
-    public StringProperty eyesProperty() {
-        return eyes;
-    }
-
-    public StringProperty skinProperty() {
-        return skin;
-    }
-
-    public StringProperty hairProperty() {
-        return hair;
-    }
-
-    public IntegerProperty speedProperty() {
-        return speed;
-    }
-
-    @JsonIgnore
-    public int getXpForNextLevel() {
-        int currentLevel = getLevel();
-        if (currentLevel < 20) {
-            return XP_THRESHOLDS[currentLevel];
-        }
-        return getExperiencePoints();
-    }
-
-    @JsonIgnore
-    public boolean checkForLevelUp() {
-        int currentLevel = getLevel();
-        if (currentLevel < 20) {
-            if (getExperiencePoints() >= getXpForNextLevel()) {
-                setLevel(currentLevel + 1);
-                Utils.showInfoAlert("Level Up!", "Congratulations! You are now level " + getLevel() + "!");
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // Getters & Setters -- Basic Info
     public String getName() {
         return characterName.get();
     }
@@ -206,12 +185,12 @@ public class Character {
         this.className.set(className);
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName.set(playerName);
+    public int getLevel() {
+        return classLevel.get();
     }
 
-    public String getPlayerName() {
-        return playerName.get();
+    public void setLevel(int level) {
+        this.classLevel.set(level);
     }
 
     public String getRace() {
@@ -230,56 +209,14 @@ public class Character {
         this.subRace.set(subRace);
     }
 
-    public int getLevel() {
-        return classLevel.get();
+    public int getExperiencePoints() {
+        return experiencePoints.get();
     }
 
-    public void setLevel(int level) {
-        this.classLevel.set(level);
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints.set(experiencePoints);
     }
 
-    public String getBackground() {
-        return background.get();
-    }
-
-    public void setBackground(String background) {
-        this.background.set(background);
-    }
-
-    public String getAlignment() {
-        return alignment.get();
-    }
-
-    public void setAlignment(String alignment) {
-        this.alignment.set(alignment);
-    }
-
-    public int getSpeed() {
-        return speed.get();
-    }
-
-    public void setSpeed(int speed) {
-        this.speed.set(speed);
-    }
-
-    public int getExperiencePoints() { return experiencePoints.get(); }
-
-    public void setExperiencePoints(int experiencePoints) {this.experiencePoints.set(experiencePoints);}
-
-    // Getter & Setters -- Inspiration and Spellcasting
-    public boolean getInspiration() {
-        return inspiration.get();
-    }
-
-    public void setInspiration(boolean inspiration) {}
-
-    public boolean getIsSpellCasting() {
-        return isSpellCasting.get();
-    }
-
-    public void setIsSpellCasting(boolean isSpellCasting) {}
-
-    // Getters & Setters -- Max Hit Points
     public int getMaxHP() {
         return maxHP.get();
     }
@@ -288,7 +225,6 @@ public class Character {
         this.maxHP.set(maxHP);
     }
 
-    // Getters & Setters -- Current Hit Points
     public int getCurrentHP() {
         return currentHP.get();
     }
@@ -300,7 +236,6 @@ public class Character {
         }
     }
 
-    // Getters & Setters -- Temporary Hit Points
     public int getTemporaryHP() {
         return temporaryHP.get();
     }
@@ -309,16 +244,6 @@ public class Character {
         temporaryHP.set(Math.max(0, hp));
     }
 
-    // Getters & Setters -- HitDice
-    public String getHitDice() {
-        return hitDice.get();
-    }
-
-    public void setHitDice(String hitDice) {
-        this.hitDice.set(hitDice);
-    }
-
-    // Getters & Setters -- Ability
     public int getStrength() {
         return strength.get();
     }
@@ -367,7 +292,135 @@ public class Character {
         this.charisma.set(score);
     }
 
-    // Getters & Setters -- Customisation Options
+    public List<String> getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(List<String> language) {
+        this.language.clear();
+        if (language != null) {
+            this.language.addAll(language);
+        }
+    }
+
+    public List<String> getRacialTraits() {
+        return racialTraits;
+    }
+
+    public void setRacialTraits(List<String> traits) {
+        this.racialTraits.clear();
+        if (traits != null) {
+            this.racialTraits.addAll(traits);
+        }
+    }
+
+    public Hashtable<String, ArrayList<String>> getProficiency() {
+        return proficiency;
+    }
+
+    public void setProficiency(Hashtable<String, ArrayList<String>> proficiency) {
+        this.proficiency = proficiency;
+    }
+
+    public List<Equipment> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<Equipment> inventory) {
+        this.inventory = inventory;
+    }
+
+    public List<String> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(List<String> features) {
+        this.features.clear();
+        if (features != null) {
+            this.features.addAll(features);
+        }
+    }
+
+    public String getCharacterName() {
+        return characterName.get();
+    }
+
+    public void setCharacterName(String characterName) {
+        this.characterName.set(characterName);
+    }
+
+    public String getClassNane() {
+        return className.get();
+    }
+
+    public void setClassNane(String classNane) {
+        this.className.set(classNane);
+    }
+
+    public int getClassLevel() {
+        return classLevel.get();
+    }
+
+    public void setClassLevel(int classLevel) {
+        this.classLevel.set(classLevel);
+    }
+
+    public String getBackground() {
+        return background.get();
+    }
+
+    public void setBackground(String background) {
+        this.background.set(background);
+    }
+
+    public String getPlayerName() {
+        return playerName.get();
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName.set(playerName);
+    }
+
+    public String getAlignment() {
+        return alignment.get();
+    }
+
+    public void setAlignment(String alignment) {
+        this.alignment.set(alignment);
+    }
+
+    public int getSpeed() {
+        return speed.get();
+    }
+
+    public void setSpeed(int speed) {
+        this.speed.set(speed);
+    }
+
+    public boolean isInspiration() {
+        return inspiration.get();
+    }
+
+    public void setInspiration(boolean inspiration) {
+        this.inspiration.set(inspiration);
+    }
+
+    public boolean isSpellCasting() {
+        return isSpellCasting.get();
+    }
+
+    public void setSpellCasting(boolean isSpellCasting) {
+        this.isSpellCasting.set(isSpellCasting);
+    }
+
+    public String getHitDice() {
+        return hitDice.get();
+    }
+
+    public void setHitDice(String hitDice) {
+        this.hitDice.set(hitDice);
+    }
+
     public String getAge() {
         return age.get();
     }
@@ -416,171 +469,193 @@ public class Character {
         this.hair.set(hair);
     }
 
-    // Getters & Setters -- Features, Traits and Other Info
-    public List<String> getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(List<String> language) {
-        this.language.clear();
-        if (language != null) {
-            this.language.addAll(language);
+    public void addLanguage(String lang) {
+        if (lang != null && !this.language.contains(lang)) {
+            this.language.add(lang);
         }
     }
 
-    public List<String> getRacialTraits() {
-        return racialTraits;
-    }
-
-    public void setRacialTraits(List<String> traits) {
-        this.racialTraits.clear();
-        if (traits != null) {
-            this.racialTraits.addAll(traits);
+    public void removeLanguage(String lang) {
+        if (lang != null) {
+            this.language.remove(lang);
         }
     }
 
-    public List<String> getFeatures() {
-        return features;
-    }
-
-    public void setFeatures(List<String> features) {
-        this.features.clear();
-        if (features != null) {
-            this.features.addAll(features);
+    public void addRacialTrait(String trait) {
+        if (trait != null && !this.racialTraits.contains(trait)) {
+            this.racialTraits.add(trait);
         }
     }
 
-    public Hashtable<String, ArrayList<String>> getProficiency() {
-        return proficiency;
+    public void removeRacialTrait(String trait) {
+        if (trait != null) {
+            this.racialTraits.remove(trait);
+        }
     }
 
-    public void setProficiency(Hashtable<String, ArrayList<String>> proficiency) {
-        this.proficiency = proficiency;
+    public void addFeature(String feature) {
+        if (feature != null && !this.features.contains(feature)) {
+            this.features.add(feature);
+        }
     }
 
-    // Getters -- Ability Modifier
+    public void removeFeature(String feature) {
+        if (feature != null) {
+            this.features.remove(feature);
+        }
+    }
+
+    @JsonIgnore
+    public void setEquippedArmor(Equipment armor) {
+        if (armor != null) {
+            if (!this.inventory.contains(armor)) {
+                System.err.println("Cannot equip armor that is not in the inventory.");
+                return;
+            }
+            this.equippedArmor = armor;
+            this.equippedArmorName = armor.getName();
+        } else {
+            this.equippedArmor = null;
+            this.equippedArmorName = null;
+        }
+    }
+
+    @JsonIgnore
+    public Equipment getEquippedArmor() {
+        return this.equippedArmor;
+    }
+
+    @JsonIgnore
+    public int getArmorClass() {
+        if (equippedArmor != null && equippedArmor.getArmorClass() != null) {
+            Equipment.ArmorClass acDetails = equippedArmor.getArmorClass();
+            int ac = acDetails.base;
+            if (acDetails.dexBonus) {
+                int dexMod = getDexterityModifier();
+                if (acDetails.maxBonus != null) {
+                    ac += Math.min(dexMod, acDetails.maxBonus);
+                } else {
+                    ac += dexMod;
+                }
+            }
+            return ac;
+        } else {
+            return 10 + getDexterityModifier();
+        }
+    }
+
     @JsonIgnore
     public int getStrengthModifier() {
-        return Math.floorDiv(getStrength() - 10, 2);
+        return (getStrength() - 10) / 2;
     }
 
     @JsonIgnore
     public int getDexterityModifier() {
-        return Math.floorDiv(getDexterity() - 10, 2);
+        return (getDexterity() - 10) / 2;
     }
 
     @JsonIgnore
     public int getConstitutionModifier() {
-        return Math.floorDiv(getConstitution() - 10, 2);
+        return (getConstitution() - 10) / 2;
     }
 
     @JsonIgnore
     public int getIntelligenceModifier() {
-        return Math.floorDiv(getIntelligence() - 10, 2);
+        return (getIntelligence() - 10) / 2;
     }
 
     @JsonIgnore
     public int getWisdomModifier() {
-        return Math.floorDiv(getWisdom() - 10, 2);
+        return (getWisdom() - 10) / 2;
     }
 
     @JsonIgnore
     public int getCharismaModifier() {
-        return Math.floorDiv(getCharisma() - 10, 2);
+        return (getCharisma() - 10) / 2;
     }
 
-    // Getters -- Proficiency Bonus
     @JsonIgnore
     public int getProficiencyBonus() {
         int level = getLevel();
-        if (level >= 17) return 6;
-        if (level >= 13) return 5;
-        if (level >= 9) return 4;
-        if (level >= 5) return 3;
+        if (level >= 17) {
+            return 6;
+        }
+        if (level >= 13) {
+            return 5;
+        }
+        if (level >= 9) {
+            return 4;
+        }
+        if (level >= 5) {
+            return 3;
+        }
         return 2;
     }
 
-    @Override
-    public String toString() {
-        return (
-            "Character Name: " +
-            getName() +
-            "\n" +
-            "\tPlayer Name: " +
-            getPlayerName() +
-            "\tClass: " +
-            getClassName() +
-            "\tLevel: " +
-            getLevel() +
-            "\n" +
-            "\tSpecies: " +
-            getRace() +
-            "\n" +
-            "\tSubSpecies: " +
-            getSubRace() +
-            "\n" +
-            "\tAbilities: " +
-            "\n\t\tStrength: \t" +
-            getStrength() +
-            "\n\t\tDexterity: \t" +
-            getDexterity() +
-            "\n\t\tConstitution: \t" +
-            getConstitution() +
-            "\n\t\tIntelligence: \t" +
-            getIntelligence() +
-            "\n\t\tWisdom: \t" +
-            getWisdom() +
-            "\n\t\tCharisma: \t" +
-            getCharisma() +
-            "\n" +
-            "\tHit Points: " +
-            getMaxHP() +
-            "\n" +
-            "\tHit Dice: " +
-            getHitDice() +
-            "\n" +
-            "\tBackground:" +
-            getBackground() +
-            "\n" +
-            "\tAlignment:" +
-            getAlignment() +
-            "\n" +
-            "\tSpeed: " +
-            getSpeed() +
-            "\n" +
-            "\tLanguages: " +
-            getLanguage().toString() +
-            "\n" +
-            "\tSpellcaster: " +
-            getIsSpellCasting()
-        );
+    @JsonIgnore
+    public static int getXpForLevel(int level) {
+        if (level < 2 || level > 20) {
+            return 0;
+        }
+        return XP_THRESHOLDS[level - 1];
     }
 
-    // Methods
+    @JsonIgnore
+    public int getXpForNextLevel() {
+        int currentLevel = getLevel();
+        if (currentLevel < 20) {
+            return XP_THRESHOLDS[currentLevel];
+        }
+        return getExperiencePoints();
+    }
 
-    // Take Damage
+    @JsonIgnore
+    public boolean checkForLevelUp() {
+        int currentLevel = getLevel();
+        if (currentLevel < 20 && getExperiencePoints() >= getXpForNextLevel()) {
+            setLevel(currentLevel + 1);
+            Utils.showInfoAlert("Level Up!", "Congratulations! You are now level " + getLevel() + "!");
+            return true;
+        }
+        return false;
+    }
+
     public void damage(int damageValue) {
-        if (damageValue <= 0) return;
-
+        if (damageValue <= 0) {
+            return;
+        }
         int tempDamage = Math.min(damageValue, getTemporaryHP());
-        setTemporaryHP(getCurrentHP() - tempDamage);
-
+        setTemporaryHP(getTemporaryHP() - tempDamage);
         int remainDamage = damageValue - tempDamage;
         if (remainDamage > 0) {
             setCurrentHP(getCurrentHP() - remainDamage);
         }
     }
 
-    // Receive healing
     public void heal(int healValue) {
-        if (healValue <= 0) return;
+        if (healValue <= 0) {
+            return;
+        }
         setCurrentHP(Math.min(getMaxHP(), getCurrentHP() + healValue));
     }
 
-    // Receive temporary hit points
-    public void temporaryHP(int temporaryHPValue) {
-        if (temporaryHPValue <= 0) return;
+    public void relinkEquippedItems() {
+        if (equippedArmorName != null && !equippedArmorName.isEmpty()) {
+            for (Equipment item : this.inventory) {
+                if (item.getName().equals(equippedArmorName)) {
+                    this.equippedArmor = item;
+                    System.out.println("Relinked equipped armor: " + equippedArmorName);
+                    break;
+                }
+            }
+        }
+    }
 
-        setTemporaryHP(getTemporaryHP() + temporaryHPValue);
+    public String getEquippedArmorName() {
+        return equippedArmorName;
+    }
+
+    public void setEquippedArmorName(String equippedArmorName) {
+        this.equippedArmorName = equippedArmorName;
     }
 }
