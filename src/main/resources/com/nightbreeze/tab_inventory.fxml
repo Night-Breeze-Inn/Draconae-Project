@@ -23,6 +23,7 @@
             <children>
                 <Button onAction="#handleEquipItemButton" text="Equip Selected" />
                 <Button onAction="#handleUnequipItemButton" text="Unequip Armor" />
+                <Button onAction="#handleRemoveItemButton" text="Remove Selected" style="-fx-text-fill: -color-danger-fg;" />
             </children>
         </HBox>
     </children>

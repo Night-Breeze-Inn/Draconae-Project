@@ -194,6 +194,16 @@ public class MainSheetTabController{
         updateXpUi();
     }
 
+    public void refreshAllUiPublic() {
+        populateHeader();
+        updateHpUi();
+        updateAcUi();
+        populateAbilityScores();
+        populateProficiencies();
+        populateActionsPanel();
+        updateXpUi();
+    }
+
     private void populateHeader() {
         characterNameLabel.setText(currentCharacter.getName());
         String subRace = currentCharacter.getSubRace() != null && !currentCharacter.getSubRace().isEmpty() ? currentCharacter.getSubRace() + " " : "";
@@ -212,7 +222,7 @@ public class MainSheetTabController{
         hpProgressBar.setProgress(maxHp > 0 ? (double) currentHp / maxHp : 0.0);
     }
 
-    void updateAcUi() {
+    public void updateAcUi() {
         acLabel.setText("AC: " + currentCharacter.getArmorClass());
     }
 

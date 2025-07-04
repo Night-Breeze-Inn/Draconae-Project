@@ -92,4 +92,26 @@ public class InventoryTabController implements Initializable {
             inventoryListView.setItems(FXCollections.observableArrayList(currentCharacter.getInventory()));
         }
     }
+
+    @FXML
+    void handleRemoveItemButton(ActionEvent event) {
+        Equipment selectedItem = inventoryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            Utils.showErrorAlert("No Selection", "Please select an item from the inventory to remove.");
+            return;
+        }
+        if (selectedItem.equals(currentCharacter.getEquippedArmor())) {
+            currentCharacter.setEquippedArmor(null);
+            mainSheetController.refreshAllUiPublic();
+        }
+
+        // Remove the item from the inventory list
+        currentCharacter.getInventory().remove(selectedItem);
+
+        // Save the updated character and refresh the UI
+        characterData.saveCharacterData(currentCharacter);
+        updateInventoryUi(); // This refreshes the ListView
+
+        Utils.showInfoAlert("Item Removed", selectedItem.getName() + " has been removed from your inventory.");
+    }
 }
